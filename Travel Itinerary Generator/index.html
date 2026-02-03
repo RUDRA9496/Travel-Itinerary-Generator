@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Itinerary Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Itinerary Generator</h1>
+
+        <form id="travelform">
+            <input type="text" id="startcity" placeholder="Starting City" />
+
+            <input type="text" id="destination" placeholder="Destination" />
+
+            <div class="row">
+                <input type="date" id="startdate" placeholder="Start Date" />
+                <input type="date" id="enddate" placeholder="End Date" />
+            </div>
+
+            <input type="number" id="days" placeholder="Number of Days" />
+
+            <input type="number" id="budget" placeholder="Budget (INR)" />
+
+            <select id="mode">
+                <option value="">Mode of Travel</option>
+                <option value="Bus">Bus</option>
+                <option value="Train">Train</option>
+                <option value="Flight">Flight</option>
+                <option value="Car">Car</option>
+            </select>
+
+            <div class="row">
+                <div class="half">
+                    <input type="number" id="adults" min="0" placeholder="Adults" />
+                </div>
+                <div class="half">
+                    <input type="number" id="kids" min="0" placeholder="kids" />
+                </div>
+            </div>
+
+            <select id="foodPref">
+                <option value="">Food Prefference</option>
+                <option value="No Preferernce">No Preference</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Non-vegetarian">Non-vegetarian</option>
+            </select> 
+
+            <input type="email" id="email" placeholder="Email address" />
+            <textarea id="Preferences" placeholder="Additional preferences (Optional)"></textarea>
+
+            <button type="submit">Generate Itinerary</button>
+        </form>
+
+        <p id="status"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

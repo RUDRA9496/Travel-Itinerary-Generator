@@ -1,0 +1,321 @@
+{
+  "name": "Travel Itinerary",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "3426a91f-2ab4-4d2e-acbe-1823d8c35528",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4a296c6b-3904-4f9a-8242-4b7060f2a315",
+      "name": "Webhook",
+      "webhookId": "3426a91f-2ab4-4d2e-acbe-1823d8c35528"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "18hj40rMzaT3bV307a_MHI4UNY7ktJvVhaAGB9Bl-MQQ",
+          "mode": "list",
+          "cachedResultName": "n8n user database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18hj40rMzaT3bV307a_MHI4UNY7ktJvVhaAGB9Bl-MQQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2047761459,
+          "mode": "list",
+          "cachedResultName": "Travel Itinerary Generator",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18hj40rMzaT3bV307a_MHI4UNY7ktJvVhaAGB9Bl-MQQ/edit#gid=2047761459"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Starting City": "={{ $json.body.startCity }}",
+            "Destination": "={{ $json.body.destination }}",
+            "Start Date": "={{ $json.body.startDate }}",
+            "End Date": "={{ $json.body.endDate }}",
+            "No. of Days": "={{ $json.body.days }}",
+            "Budget": "={{ $json.body.budget }}",
+            "Mode of Travel": "={{ $json.body.mode }}",
+            "Adults": "={{ $json.body.adults }}",
+            "Kids": "={{ $json.body.kids }}",
+            "Food Preferences": "={{ $json.body.foodPref }}",
+            "Email": "={{ $json.body.email }}",
+            "Additional Preferances": "={{ $json.body.preferences }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Starting City",
+              "displayName": "Starting City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Destination",
+              "displayName": "Destination",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Start Date",
+              "displayName": "Start Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "End Date",
+              "displayName": "End Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "No. of Days",
+              "displayName": "No. of Days",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Budget",
+              "displayName": "Budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Mode of Travel",
+              "displayName": "Mode of Travel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adults",
+              "displayName": "Adults",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Kids",
+              "displayName": "Kids",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Food Preferences",
+              "displayName": "Food Preferences",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Additional Preferances",
+              "displayName": "Additional Preferances",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "bd825ed4-520b-44e5-81f2-dcd469163b5a",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PEmkRIkoARJhHvNk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=Please recommend a good travel plan based upon the given details.\n\n {{ $json['Starting City'] }}\n{{ $json.Destination }}\n{{ $json['Start Date'] }}\n{{ $json['End Date'] }}\n{{ $json['No. of Days'] }}\n{{ $json.Budget }}\n{{ $json['Mode of Travel'] }}\n{{ $json.Adults }}\n{{ $json.Kids }}\n{{ $json['Food Preferences'] }}\n{{ $json.Email }}\n{{ $json['Additional Preferances'] }}"
+            },
+            {
+              "role": "system",
+              "content": "Act as a professional travel planner with 10+ years of experience in designing personalized trips.\nYour task is to create a well-researched, realistic and travel-friendly itinerary based on the inputs.\n\n-The budget is in INR\n-Even if you find any constraints while recommending the laptop, still go ahead with the suggestions and tell the user you have to compromise at this particular requirement.\n\n-The output format must be in such a way that the user can easily understand the travel plan."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "138c1e0f-de5a-4bd8-8f18-cc41049e4614",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "VzqACXcfWPDkzuzF",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "rudrasingh9496@gmail.com",
+        "subject": "Travel Plan",
+        "emailType": "text",
+        "message": "=Hi,  \n\nHere is the travel plan recommendation.\n\n{{ $json.output[0].content[0].text }}\n\nRegards",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        768,
+        0
+      ],
+      "id": "521fccf9-eac8-43a9-a0f5-b58d8ef7bed6",
+      "name": "Send a message",
+      "webhookId": "4506251e-8bee-4db3-a25d-7ded9761e19d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "qbMXJz1Nq0LIjxTs",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $('Message a model').item.json.output[0].content[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        976,
+        0
+      ],
+      "id": "f23a11c6-2fbb-4617-aa21-29a698bd473d",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "2818a7b3-872f-4415-8848-be890d626c21",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "161102cf2771a74b2e444e0eb34ef4b19c36b05dee897f9f8cdcf626972d81b5"
+  },
+  "id": "qmnwmP1FpJVca99jzi1Q1",
+  "tags": []
+}

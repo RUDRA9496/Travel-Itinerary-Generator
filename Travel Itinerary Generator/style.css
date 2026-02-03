@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.container {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.row {
+    display: flex,;
+    gap: 10px;
+}
+
+.row .half {
+    flex: 1;
+}
+
+.row input[type="date"],
+.row input[type="number"] {
+    width: 100%;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: grey;
+}
+
+#status {
+    margin-top: 15px;
+    text-align: center;
+}
